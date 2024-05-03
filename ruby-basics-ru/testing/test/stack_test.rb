@@ -9,14 +9,14 @@ class StackTest < Minitest::Test
     stack1 = Stack.new([])
     stack2 = Stack.new([1])
     stack1.push!(1)
-    assert { stack1.to_a == stack2.to_a }
+    assert { stack1 == stack2 }
   end
 
   def test_item_remove
     stack1 = Stack.new([1, 2, 3])
     stack2 = Stack.new([1, 2])
     stack1.pop!
-    assert { stack1.to_a == stack2.to_a }
+    assert { stack1 == stack2 }
   end
 
   def test_clear

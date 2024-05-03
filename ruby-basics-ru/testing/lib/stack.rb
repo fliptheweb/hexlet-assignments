@@ -28,4 +28,8 @@ class Stack
   def size
     @elements.size
   end
+
+  def ==(other)
+    @elements.to_a == other.to_a
+  end
 end
