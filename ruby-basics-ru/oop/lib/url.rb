@@ -21,14 +21,11 @@ class Url
   end
 
   def query_param(key, default = nil)
-    query_params[key] || default
+    query_params.fetch(key, default)
   end
 
-  def ==(other)
-    @url.scheme == other.scheme &&
-    @url.host == other.host &&
-    @url.port == other.port &&
-    query_params == other.query_params
+  def <=>(other)
+    [scheme, host, port, query_params] <=> [other.scheme, other.host, other.port, other.query_params]
   end
 end
 # END
