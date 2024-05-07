@@ -26,6 +26,7 @@ module Model
   end
 
   def attributes
+    # Why i can't use @@scheme here?
     self.class.scheme.each_with_object({}) do |(name), acc|
       acc[name] = send name
     end
