@@ -35,6 +35,7 @@ module Model
     self.class.scheme.each do |name, options|
       value = attributes.key?(name) ? attributes[name] : options[:default]
       # Is it possible to replace by send "#{name}="?
+      # How to avoid cast here as we have it in define_method already?
       instance_variable_set "@#{name}", cast(value, options[:type])
     end
   end
