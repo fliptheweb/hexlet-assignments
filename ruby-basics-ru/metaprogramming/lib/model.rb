@@ -3,11 +3,6 @@
 # https://github.com/solnic/virtus/blob/master/lib/virtus.rb
 # BEGIN
 module Model
-  # How we can create class methods in different way?
-  def self.included(base)
-    base.extend ClassMethods
-  end
-
   module ClassMethods
     attr_reader :scheme
 
@@ -20,9 +15,31 @@ module Model
       end
 
       define_method "#{name}=" do |value|
-        instance_variable_set "@#{name}", cast(value, options[:type])
+        instance_variable_set "@#{name}", self.class.cast(value, options[:type])
       end
     end
+
+    def cast(value, type)
+      return value if type.nil? || value.nil?
+
+      case type
+      when :integer
+        value.to_i
+      when :string
+        value.to_s
+      when :boolean
+        value.to_s == 'true'
+      when :datetime
+        DateTime.parse(value)
+      else
+        throw "Unknown type: #{type}"
+      end
+    end
+  end
+
+  # How we can create class methods in different way?
+  def self.included(base)
+    base.extend ClassMethods
   end
 
   def attributes
@@ -34,27 +51,8 @@ module Model
 
   def initialize(attributes = {})
     self.class.scheme.each do |name, options|
-      value = attributes.key?(name) ? attributes[name] : options[:default]
+      value = attributes.key?(name) ? attributes[name] : options.fetch(:default, nil)
       send "#{name}=", value
-    end
-  end
-
-  private
-
-  def cast(value, type)
-    return value if type.nil? || value.nil?
-
-    case type
-    when :integer
-      value.to_i
-    when :string
-      value.to_s
-    when :boolean
-      value.to_s == 'true'
-    when :datetime
-      DateTime.parse(value)
-    else
-      value
     end
   end
 end
