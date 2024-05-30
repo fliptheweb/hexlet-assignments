@@ -1,0 +1,436 @@
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "articles"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "articles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20240515091117)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220920132659),
+(20220920132658),
+(20220920132657);[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'test', '2024-05-15 09:25:27.582850', '2024-05-15 09:25:27.582853') RETURNING "key"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '6890ced52883b9105ac10ab1dfa49d7c6078e2cb', '2024-05-15 09:25:27.583248', '2024-05-15 09:25:27.583248') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.1ms)[0m  [1m[31mDELETE FROM "articles";
+INSERT INTO "articles" ("id", "title", "body", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', '2024-05-15 09:25:27.653934', '2024-05-15 09:25:27.653934');
+INSERT INTO "articles" ("id", "title", "body", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', '2024-05-15 09:25:27.653934', '2024-05-15 09:25:27.653934')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------
+ArticlesTest: test_should_show_article
+--------------------------------------
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles/980190962" for 127.0.0.1 at 2024-05-15 12:25:27 +0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1429)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 1517)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms | Allocations: 7678)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------
+ArticlesTest: test_should_get_index
+-----------------------------------
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles" for 127.0.0.1 at 2024-05-15 12:25:27 +0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  Rendered articles/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 270)
+  Rendered layout layouts/application.html.erb (Duration: 0.2ms | Allocations: 327)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 558)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------
+ArticlesTest: test_visiting_article_page
+----------------------------------------
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles/980190962" for 127.0.0.1 at 2024-05-15 12:25:27 +0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 140)
+  Rendered layout layouts/application.html.erb (Duration: 0.1ms | Allocations: 197)
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 483)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------
+ArticlesTest: test_visiting_the_index
+-------------------------------------
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles" for 127.0.0.1 at 2024-05-15 12:25:27 +0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  Rendered articles/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 140)
+  Rendered layout layouts/application.html.erb (Duration: 0.1ms | Allocations: 197)
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 364)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.1ms)[0m  [1m[31mDELETE FROM "articles";
+INSERT INTO "articles" ("id", "title", "body", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', '2024-05-15 11:14:19.794235', '2024-05-15 11:14:19.794235');
+INSERT INTO "articles" ("id", "title", "body", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', '2024-05-15 11:14:19.794235', '2024-05-15 11:14:19.794235')[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------
+ArticlesTest: test_should_get_index
+-----------------------------------
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles" for 127.0.0.1 at 2024-05-15 14:14:19 +0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  Rendered articles/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 717)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | Allocations: 805)
+Completed 500 Internal Server Error in 670ms (ActiveRecord: 0.0ms | Allocations: 972094)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------
+ArticlesTest: test_should_show_article
+--------------------------------------
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles/980190962" for 127.0.0.1 at 2024-05-15 14:14:20 +0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 243)
+  Rendered layout layouts/application.html.erb (Duration: 0.2ms | Allocations: 300)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 875)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------
+ArticlesTest: test_visiting_article_page
+----------------------------------------
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles/980190962" for 127.0.0.1 at 2024-05-15 14:14:20 +0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 140)
+  Rendered layout layouts/application.html.erb (Duration: 0.1ms | Allocations: 197)
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 483)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------
+ArticlesTest: test_visiting_the_index
+-------------------------------------
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles" for 127.0.0.1 at 2024-05-15 14:14:20 +0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  Rendered articles/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 140)
+  Rendered layout layouts/application.html.erb (Duration: 0.1ms | Allocations: 197)
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 364)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.1ms)[0m  [1m[31mDELETE FROM "articles";
+INSERT INTO "articles" ("id", "title", "body", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', '2024-05-15 11:14:44.414027', '2024-05-15 11:14:44.414027');
+INSERT INTO "articles" ("id", "title", "body", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', '2024-05-15 11:14:44.414027', '2024-05-15 11:14:44.414027')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------
+ArticlesTest: test_should_get_index
+-----------------------------------
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles" for 127.0.0.1 at 2024-05-15 14:14:44 +0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 615)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | Allocations: 951)
+Completed 200 OK in 133ms (Views: 2.8ms | ActiveRecord: 0.1ms | Allocations: 283688)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------
+ArticlesTest: test_should_show_article
+--------------------------------------
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles/980190962" for 127.0.0.1 at 2024-05-15 14:14:44 +0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 120)
+  Rendered layout layouts/application.html.erb (Duration: 0.2ms | Allocations: 231)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 813)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------
+ArticlesTest: test_visiting_article_page
+----------------------------------------
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles/980190962" for 127.0.0.1 at 2024-05-15 14:14:44 +0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 0.0ms | Allocations: 11)
+  Rendered layout layouts/application.html.erb (Duration: 0.1ms | Allocations: 122)
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 427)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------
+ArticlesTest: test_visiting_the_index
+-------------------------------------
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles" for 127.0.0.1 at 2024-05-15 14:14:44 +0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 193)
+  Rendered layout layouts/application.html.erb (Duration: 0.2ms | Allocations: 295)
+Completed 200 OK in 0ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 481)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.1ms)[0m  [1m[31mDELETE FROM "articles";
+INSERT INTO "articles" ("id", "title", "body", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', '2024-05-15 11:16:38.512113', '2024-05-15 11:16:38.512113');
+INSERT INTO "articles" ("id", "title", "body", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', '2024-05-15 11:16:38.512113', '2024-05-15 11:16:38.512113')[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------
+ArticlesTest: test_should_show_article
+--------------------------------------
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles/980190962" for 127.0.0.1 at 2024-05-15 14:16:38 +0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 228)
+  Rendered layout layouts/application.html.erb (Duration: 0.5ms | Allocations: 685)
+Completed 200 OK in 150ms (Views: 2.8ms | ActiveRecord: 0.0ms | Allocations: 283794)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------
+ArticlesTest: test_should_get_index
+-----------------------------------
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles" for 127.0.0.1 at 2024-05-15 14:16:38 +0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 353)
+  Rendered layout layouts/application.html.erb (Duration: 0.5ms | Allocations: 455)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 705)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------
+ArticlesTest: test_visiting_article_page
+----------------------------------------
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles/980190962" for 127.0.0.1 at 2024-05-15 14:16:38 +0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 0.0ms | Allocations: 11)
+  Rendered layout layouts/application.html.erb (Duration: 0.1ms | Allocations: 122)
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 427)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------
+ArticlesTest: test_visiting_the_index
+-------------------------------------
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles" for 127.0.0.1 at 2024-05-15 14:16:38 +0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 193)
+  Rendered layout layouts/application.html.erb (Duration: 0.2ms | Allocations: 295)
+Completed 200 OK in 0ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 481)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.1ms)[0m  [1m[31mDELETE FROM "articles";
+INSERT INTO "articles" ("id", "title", "body", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', '2024-05-15 11:17:44.561510', '2024-05-15 11:17:44.561510');
+INSERT INTO "articles" ("id", "title", "body", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', '2024-05-15 11:17:44.561510', '2024-05-15 11:17:44.561510')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------
+ArticlesTest: test_should_get_index
+-----------------------------------
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles" for 127.0.0.1 at 2024-05-15 14:17:44 +0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 625)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | Allocations: 961)
+Completed 200 OK in 156ms (Views: 2.8ms | ActiveRecord: 0.1ms | Allocations: 283698)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------
+ArticlesTest: test_visiting_the_index
+-------------------------------------
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles" for 127.0.0.1 at 2024-05-15 14:17:44 +0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 193)
+  Rendered layout layouts/application.html.erb (Duration: 0.2ms | Allocations: 295)
+Completed 200 OK in 0ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 482)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------
+ArticlesTest: test_visiting_article_page
+----------------------------------------
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles/980190962" for 127.0.0.1 at 2024-05-15 14:17:44 +0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 120)
+  Rendered layout layouts/application.html.erb (Duration: 0.2ms | Allocations: 231)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 812)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------
+ArticlesTest: test_should_show_article
+--------------------------------------
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles/980190962" for 127.0.0.1 at 2024-05-15 14:17:44 +0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 0.0ms | Allocations: 11)
+  Rendered layout layouts/application.html.erb (Duration: 0.1ms | Allocations: 122)
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 427)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.1ms)[0m  [1m[31mDELETE FROM "articles";
+INSERT INTO "articles" ("id", "title", "body", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', '2024-05-15 11:18:08.038733', '2024-05-15 11:18:08.038733');
+INSERT INTO "articles" ("id", "title", "body", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyText', '2024-05-15 11:18:08.038733', '2024-05-15 11:18:08.038733')[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------
+ArticlesTest: test_should_get_index
+-----------------------------------
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles" for 127.0.0.1 at 2024-05-15 14:18:08 +0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 623)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | Allocations: 959)
+Completed 200 OK in 137ms (Views: 2.7ms | ActiveRecord: 0.1ms | Allocations: 283700)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------
+ArticlesTest: test_visiting_article_page
+----------------------------------------
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles/980190962" for 127.0.0.1 at 2024-05-15 14:18:08 +0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 120)
+  Rendered layout layouts/application.html.erb (Duration: 0.2ms | Allocations: 231)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 813)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------
+ArticlesTest: test_should_show_article
+--------------------------------------
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles/980190962" for 127.0.0.1 at 2024-05-15 14:18:08 +0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 0.0ms | Allocations: 11)
+  Rendered layout layouts/application.html.erb (Duration: 0.1ms | Allocations: 122)
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 427)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------
+ArticlesTest: test_visiting_the_index
+-------------------------------------
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/articles" for 127.0.0.1 at 2024-05-15 14:18:08 +0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 193)
+  Rendered layout layouts/application.html.erb (Duration: 0.2ms | Allocations: 295)
+Completed 200 OK in 0ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 481)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
