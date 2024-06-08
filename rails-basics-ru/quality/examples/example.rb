@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # https :/ / github.com / rubocop / rubocop
 # https :/ / docs.rubocop.org / rubocop / index.html
 # https :/ / github.com / rubocop / rubocop - rails
@@ -8,10 +10,10 @@
 Note.delete_all
 
 # Запуск дебаггера
-debugger
+# debugger
 
 # test/integration/notes_flow_test.rb
-require "test_helper"
+require 'test_helper'
 
 class NotesFlowTest < ActionDispatch::IntegrationTest
   # Rails автоматически используют транзакционные тесты
@@ -23,7 +25,7 @@ class NotesFlowTest < ActionDispatch::IntegrationTest
   end
 
   test 'opens one note page' do
-    note = Note.create(title: "Title 1", description: "Description 1")
+    note = Note.create(title: 'Title 1', description: 'Description 1')
 
     # debugger
 
@@ -47,7 +49,7 @@ end
 # Фикстуры
 # при загрузке фикстур создается хелпер с помощью которого можно получить модели
 # В тестах
-notes_list = notes()
+notes
 
 # Можно получить объект из фикстур по ключу в yaml файле фикстуры
-note = notes(:one)
+notes(:one)
