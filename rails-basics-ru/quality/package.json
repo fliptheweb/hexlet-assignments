@@ -9,6 +9,7 @@
     "@rails/activestorage": "^7.0.0",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.4",
+    "bun": "^1.1.12",
     "esbuild": "^0.17.15",
     "sass": "^1.61.0"
   },
