@@ -1,8 +1,8 @@
-https :/ / github.com / rubocop / rubocop
-https :/ / docs.rubocop.org / rubocop / index.html
-https :/ / github.com / rubocop / rubocop - rails
-https :/ / github.com / faker - ruby / faker
-https :/ / github.com / presidentbeef / brakeman
+# https :/ / github.com / rubocop / rubocop
+# https :/ / docs.rubocop.org / rubocop / index.html
+# https :/ / github.com / rubocop / rubocop - rails
+# https :/ / github.com / faker - ruby / faker
+# https :/ / github.com / presidentbeef / brakeman
 
 # в консоли
 Note.delete_all

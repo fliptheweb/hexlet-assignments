@@ -1,0 +1,14 @@
+news1:
+  title: news 1
+  body: This is the first news bulletin
+  published: true
+
+news2:
+  title: news 2
+  body: This is the Second news bulletin
+  published: true
+
+news3:
+  title: news 3
+  body: This is hidden news
+  published: false

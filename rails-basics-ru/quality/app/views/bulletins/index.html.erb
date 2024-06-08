@@ -1,4 +1,8 @@
 <h1>Bulletins</h1>
 <%# BEGIN %>
 
+<% @bulletins.each do |bulletin| %>
+  <%= bulletin.title %>
+<% end %>
+
 <%# END %>
