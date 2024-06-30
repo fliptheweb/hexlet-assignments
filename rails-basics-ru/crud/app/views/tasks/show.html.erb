@@ -1,0 +1,15 @@
+<h1><%= @task.name %></h1>
+<p><%= @task.description %></p>
+
+<div style="background: gray; padding: 10px">
+<p>
+Creator: <%= @task.creator %>
+</p>
+<p>
+Performer: <%= @task.performer %>
+</p>
+</div>
+
+<%= link_to 'Edit', edit_task_path(@task) %>
+<%= link_to 'Delete Task', task_path(@task), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', root_path %>

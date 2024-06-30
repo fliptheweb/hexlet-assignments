@@ -1,0 +1,33 @@
+<%= form_with model: @task do |form| %>
+  <div>
+    <%= form.label :name %><br />
+    <%= form.text_field :name %>
+    <%= task.errors.full_messages_for(:name) if task.errors.present? %>
+  </div>
+
+  <div>
+    <%= form.label :description %><br />
+    <%= form.text_field :description %>
+    <%= task.errors.full_messages_for(:description) if task.errors.present? %>
+  </div>
+
+  <div>
+    <%= form.label :creator %><br />
+    <%= form.text_field :creator %>
+    <%= task.errors.full_messages_for(:creator) if task.errors.present? %>
+  </div>
+
+  <div>
+    <%= form.label :performer %><br />
+    <%= form.text_field :performer %>
+    <%= task.errors.full_messages_for(:performer) if task.errors.present? %>
+  </div>
+
+  <div>
+    <%= form.label :completed %>
+    <%= form.check_box :completed %>
+    <%= task.errors.full_messages_for(:completed) if task.errors.present? %>
+  </div>
+  <br /><br />
+  <%= form.submit %><br />
+<% end %>
