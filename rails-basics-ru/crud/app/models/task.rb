@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: tasks
@@ -19,6 +21,6 @@ class Task < ApplicationRecord
   private
 
   def set_defaults
-    status = "new" if status.blank?
+    'new' if status.blank?
   end
 end
