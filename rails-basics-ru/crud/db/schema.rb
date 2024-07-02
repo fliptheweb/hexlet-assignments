@@ -14,7 +14,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_30_113853) do
   create_table "tasks", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "status"
+    t.string "status", default: "new", null: false
     t.string "creator"
     t.string "performer"
     t.boolean "completed"

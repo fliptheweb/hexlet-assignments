@@ -13,5 +13,12 @@
 #  updated_at  :datetime         not null
 #
 class Task < ApplicationRecord
-  validates :name, :creator, presence: true
+  before_validation :set_defaults
+  validates :name, :creator, :status, presence: true
+
+  private
+
+  def set_defaults
+    status = "new" if status.blank?
+  end
 end
