@@ -41,11 +41,10 @@ class TasksController < ApplicationController
 
   def destroy
     @task = Task.find(params[:id])
-    debugger
 
     if @task.destroy
       flash[:success] = 'Task has been successfully deleted'
-      redirect_to root_path
+      redirect_to tasks_path
     else
       flash[:failure] = 'Task hasn`t been deleted'
       redirect_to task_path(@task)
@@ -55,6 +54,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :description, :creator, :performer)
+    params.require(:task).permit(:name, :description, :status, :creator, :performer, :completed)
   end
 end
