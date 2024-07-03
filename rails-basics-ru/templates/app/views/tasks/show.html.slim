@@ -4,10 +4,10 @@ p
   = @task.description
 div[style="background: gray; padding: 10px"]
   p
-    |  Creator: 
+    |  Creator:
     = @task.creator
   p
-    |  Performer: 
+    |  Performer:
     = @task.performer
 = link_to 'Edit', edit_task_path(@task)
 = link_to 'Destroy', task_path(@task), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
