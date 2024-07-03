@@ -1,0 +1,11 @@
+h1
+  | Tasks
+ul
+  - @tasks.each do |task|
+    li
+
+    h2
+      = link_to task.name, task_path(task)
+    p
+      = link_to task.description, nil
+    hr
