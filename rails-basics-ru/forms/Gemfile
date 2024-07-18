@@ -24,6 +24,7 @@ gem 'stimulus-rails'
 gem 'cssbundling-rails'
 
 gem 'slim-rails'
+gem 'simple_form'
 # BEGIN
 
 # END
