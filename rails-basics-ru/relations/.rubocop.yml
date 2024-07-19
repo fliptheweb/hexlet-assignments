@@ -8,7 +8,6 @@ AllCops:
     - '**/examples/**/*'
     - '**/bin/*'
 
-
 Style/Documentation:
   Enabled: false
 
