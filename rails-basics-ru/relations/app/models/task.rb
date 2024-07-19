@@ -1,4 +1,6 @@
+# frozen_string_literal: true
+
 class Task < ApplicationRecord
-  belongs_to :user
-  belongs_to :status
+  belongs_to :user, optional: true
+  belongs_to :status, optional: true
 end

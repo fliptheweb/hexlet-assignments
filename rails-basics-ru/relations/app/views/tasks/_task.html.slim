@@ -6,10 +6,12 @@ div id="#{dom_id task}"
     strong Description:
     =< task.description
 
-  p
-    strong Status:
-    =< task.status.name
+  - if task.status
+    p
+      strong Status:
+      =< task.status.name
 
-  p
-    strong User:
-    =< task.user.name
+  - if task.user
+    p
+      strong User:
+      =< task.user.name
